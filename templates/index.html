@@ -33,17 +33,18 @@
     </form>
   {% endif %}
   <script>
-    const audios = document.querySelectorAll('audio');
-    let audioStarted = false;
-    const startAudio = () => {
-      if (!audioStarted) {
-        audios.forEach(a => a.play());
-        audioStarted = true;
-      }
-    };
-    document.querySelectorAll('button').forEach(btn => {
-      btn.addEventListener('click', startAudio);
-    });
+      const audios = document.querySelectorAll('audio');
+      let audioStarted = false;
+      const startAudio = () => {
+        if (!audioStarted) {
+          audios.forEach(a => a.play());
+          audioStarted = true;
+        }
+      };
+      document.addEventListener('DOMContentLoaded', startAudio);
+      document.querySelectorAll('button').forEach(btn => {
+        btn.addEventListener('click', startAudio);
+      });
     document.getElementById('muteToggle').addEventListener('click', () => {
       if (!audios.length) return;
       const muted = audios[0].muted;
