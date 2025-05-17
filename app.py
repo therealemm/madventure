@@ -11,7 +11,11 @@ with open(os.path.join("dreams", "dream1.json")) as f:
 
 @app.route("/")
 def index():
-    scene_id = session.get("scene", "start")
+    scene_id = session.get("scene")
+    if not scene_id:
+        # Player hasn't started yet, show the start page
+        return render_template("start.html")
+
     scene = DREAM.get(scene_id, DREAM.get("start"))
     choices = scene.get("choices", [])
     return render_template(
@@ -28,6 +32,13 @@ def choose():
         session["scene"] = next_scene
     else:
         session["scene"] = "start"
+    return redirect(url_for("index"))
+
+
+@app.route("/begin", methods=["POST"])
+def begin():
+    """Start the story from the first scene."""
+    session["scene"] = "start"
     return redirect(url_for("index"))
 
 

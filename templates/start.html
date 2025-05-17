@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Madventure - Start</title>
+  <style>
+    body { text-align: center; font-family: sans-serif; background: #fdf6e3; }
+    img { max-width: 80%; height: auto; }
+    button { margin-top: 2em; padding: 1em 2em; font-size: 1.2em; }
+  </style>
+</head>
+<body>
+  <img src="{{ url_for('static', filename='images/startpage.png') }}" alt="Start">
+  <form action="{{ url_for('begin') }}" method="post">
+    <button type="submit">Start</button>
+  </form>
+</body>
+</html>
