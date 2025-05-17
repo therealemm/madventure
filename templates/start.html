@@ -5,14 +5,27 @@
   <title>Madventure - Start</title>
   <style>
     body { text-align: center; font-family: sans-serif; background: #fdf6e3; }
-    img { max-width: 80%; height: auto; }
-    button { margin-top: 2em; padding: 1em 2em; font-size: 1.2em; }
+    .start-image { position: relative; display: inline-block; }
+    .start-image img { max-width: 80%; height: auto; display: block; }
+    .start-btn {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: 15%;
+      width: 30%;
+      height: 12%;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+    }
   </style>
 </head>
 <body>
-  <img src="{{ url_for('static', filename='images/startpage.png') }}" alt="Start">
-  <form action="{{ url_for('begin') }}" method="post">
-    <button type="submit">Start</button>
-  </form>
+  <div class="start-image">
+    <img src="{{ url_for('static', filename='images/startpage.png') }}" alt="Start">
+    <form action="{{ url_for('begin') }}" method="post">
+      <button type="submit" class="start-btn" aria-label="Start"></button>
+    </form>
+  </div>
 </body>
 </html>
