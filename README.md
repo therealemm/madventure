@@ -8,3 +8,15 @@ Built with:
 - JSON-based narrative engine
 
 This is a poetic, slow-play experience.
+
+## Running
+
+1. Install dependencies:
+   ```bash
+   pip install flask
+   ```
+2. Run the app:
+   ```bash
+   python app.py
+   ```
+3. Visit `http://localhost:5000` in your browser.
