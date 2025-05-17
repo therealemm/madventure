@@ -18,6 +18,7 @@
   <audio id="wind" src="{{ url_for('static', filename='audio/wind.ogg') }}" autoplay loop></audio>
   <audio id="dreamy" src="{{ url_for('static', filename='audio/dreamy.ogg') }}" autoplay loop></audio>
   <audio id="cat" src="{{ url_for('static', filename='audio/cat.ogg') }}" autoplay loop></audio>
+  <audio id="moorMystery" src="{{ url_for('static', filename='audio/Moor Mystery loop.mp3') }}" autoplay loop></audio>
   {% if choices %}
     <form action="/choice" method="post">
       {% for choice in choices %}
