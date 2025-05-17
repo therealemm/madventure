@@ -13,7 +13,12 @@ with open(os.path.join("dreams", "dream1.json")) as f:
 def index():
     scene_id = session.get("scene", "start")
     scene = DREAM.get(scene_id, DREAM.get("start"))
-    return render_template("index.html", text=scene.get("text", ""), choices=scene.get("choices", []))
+    choices = scene.get("choices", [])
+    return render_template(
+        "index.html",
+        text=scene.get("text", ""),
+        choices=choices,
+    )
 
 @app.route("/choice", methods=["POST"])
 def choose():
@@ -22,6 +27,13 @@ def choose():
         session["scene"] = next_scene
     else:
         session["scene"] = "start"
+    return redirect(url_for("index"))
+
+
+@app.route("/reset", methods=["POST"])
+def reset():
+    """Clear the saved scene and restart the story."""
+    session.pop("scene", None)
     return redirect(url_for("index"))
 
 if __name__ == "__main__":

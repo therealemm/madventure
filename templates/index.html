@@ -28,6 +28,9 @@
     </form>
   {% else %}
     <p>The dream fades...</p>
+    <form action="{{ url_for('reset') }}" method="post">
+      <button type="submit">Start Over</button>
+    </form>
   {% endif %}
   <script>
     const audios = document.querySelectorAll('audio');
