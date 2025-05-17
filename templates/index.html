@@ -11,6 +11,13 @@
 <body>
   <h1>Madventure</h1>
   <p>{{ text }}</p>
+  <div id="audio-controls">
+    <button id="muteToggle">Mute/Unmute</button>
+    <input type="range" id="volume" min="0" max="1" step="0.1" value="1">
+  </div>
+  <audio id="wind" src="{{ url_for('static', filename='audio/wind.ogg') }}" autoplay loop></audio>
+  <audio id="dreamy" src="{{ url_for('static', filename='audio/dreamy.ogg') }}" autoplay loop></audio>
+  <audio id="cat" src="{{ url_for('static', filename='audio/cat.ogg') }}" autoplay loop></audio>
   {% if choices %}
     <form action="/choice" method="post">
       {% for choice in choices %}
@@ -22,5 +29,15 @@
   {% else %}
     <p>The dream fades...</p>
   {% endif %}
+  <script>
+    const audios = document.querySelectorAll('audio');
+    document.getElementById('muteToggle').addEventListener('click', () => {
+      const muted = audios[0].muted;
+      audios.forEach(a => a.muted = !muted);
+    });
+    document.getElementById('volume').addEventListener('input', (e) => {
+      audios.forEach(a => a.volume = e.target.value);
+    });
+  </script>
 </body>
 </html>
