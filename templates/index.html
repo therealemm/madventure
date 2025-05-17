@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Madventure</title>
+  <style>
+    body { font-family: sans-serif; margin: 2em; background: #fdf6e3; }
+    .choice { margin-top: 1em; }
+  </style>
+</head>
+<body>
+  <h1>Madventure</h1>
+  <p>{{ text }}</p>
+  {% if choices %}
+    <form action="/choice" method="post">
+      {% for choice in choices %}
+        <div class="choice">
+          <button type="submit" name="next" value="{{ choice.next }}">{{ choice.text }}</button>
+        </div>
+      {% endfor %}
+    </form>
+  {% else %}
+    <p>The dream fades...</p>
+  {% endif %}
+</body>
+</html>

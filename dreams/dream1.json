@@ -1,0 +1,42 @@
+{
+  "start": {
+    "text": "You step softly through a veil of mist. The soul here is curled beside a shuttered window, trembling.",
+    "choices": [
+      { "text": "Curl beside them in silence.", "next": "curl" },
+      { "text": "Nudge the window open with your paw.", "next": "window" },
+      { "text": "Call softly, 'Do you remember the warmth?'", "next": "call" }
+    ]
+  },
+  "curl": {
+    "text": "You curl beside them. The silence becomes comfort. Slowly, they breathe easier.",
+    "choices": [
+      { "text": "Sleep here a while.", "next": "sleep" },
+      { "text": "Rise and look outside.", "next": "window" }
+    ]
+  },
+  "window": {
+    "text": "The window creaks open, letting in a shimmer of starlight. The soul blinks, curious.",
+    "choices": [
+      { "text": "Point out the constellations.", "next": "stars" },
+      { "text": "Close the window gently.", "next": "start" }
+    ]
+  },
+  "call": {
+    "text": "At your words, they shudder. A memory flickers in their eyes, but fades too quickly.",
+    "choices": [
+      { "text": "Offer them a paw to hold.", "next": "curl" },
+      { "text": "Step back and watch.", "next": "start" }
+    ]
+  },
+  "sleep": {
+    "text": "You both rest. In dreams, the soul finds a fragment of peace. You know your visit helped.",
+    "choices": []
+  },
+  "stars": {
+    "text": "You trace the constellations with your paw. The soul smiles faintly, remembering. Hope glimmers.",
+    "choices": [
+      { "text": "Stay by the window.", "next": "sleep" },
+      { "text": "Return to their side.", "next": "curl" }
+    ]
+  }
+}
