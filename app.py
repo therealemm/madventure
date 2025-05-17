@@ -18,6 +18,7 @@ def index():
         "index.html",
         text=scene.get("text", ""),
         choices=choices,
+        scene_id=scene_id,
     )
 
 @app.route("/choice", methods=["POST"])

@@ -15,10 +15,9 @@
     <button id="muteToggle">Mute/Unmute</button>
     <input type="range" id="volume" min="0" max="1" step="0.1" value="1">
   </div>
-  <audio id="wind" src="{{ url_for('static', filename='audio/wind.ogg') }}" autoplay loop></audio>
-  <audio id="dreamy" src="{{ url_for('static', filename='audio/dreamy.ogg') }}" autoplay loop></audio>
-  <audio id="cat" src="{{ url_for('static', filename='audio/cat.ogg') }}" autoplay loop></audio>
-  <audio id="moorMystery" src="{{ url_for('static', filename='audio/Moor Mystery loop.mp3') }}" autoplay loop></audio>
+  {% if scene_id == 'start' %}
+  <audio id="moorMystery" src="{{ url_for('static', filename='audio/Moor Mystery loop.mp3') }}" loop></audio>
+  {% endif %}
   {% if choices %}
     <form action="/choice" method="post">
       {% for choice in choices %}
@@ -35,11 +34,23 @@
   {% endif %}
   <script>
     const audios = document.querySelectorAll('audio');
+    let audioStarted = false;
+    const startAudio = () => {
+      if (!audioStarted) {
+        audios.forEach(a => a.play());
+        audioStarted = true;
+      }
+    };
+    document.querySelectorAll('button').forEach(btn => {
+      btn.addEventListener('click', startAudio);
+    });
     document.getElementById('muteToggle').addEventListener('click', () => {
+      if (!audios.length) return;
       const muted = audios[0].muted;
       audios.forEach(a => a.muted = !muted);
     });
     document.getElementById('volume').addEventListener('input', (e) => {
+      if (!audios.length) return;
       audios.forEach(a => a.volume = e.target.value);
     });
   </script>
